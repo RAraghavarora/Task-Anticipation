@@ -24,7 +24,7 @@ is a new version of LPG including several extensions and improvements.
 LPG-td supports Timed Initial Literals and Derived Predicates, the two 
 main new features of PDDL2.2.
 
-"lpgtd-linux.tar.gz" is a complied version for Linux (Debian 3.0)
+"lpgtd-linux.tar.gz" is a complied version for Linux 
 "lpgtd-win.tar.gz" is a compiled version for Windows (Windows 2000)
 
 
