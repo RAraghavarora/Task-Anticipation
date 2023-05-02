@@ -1,19 +1,19 @@
 (define (problem elevators-problem)
     (:domain elevators)
     (:objects
-        n1 n2 n3 n4 n5 - num
-        p1 p2 p3 - passenger
+        floor1 floor2 floor3 floor4 floor5 - num
+        rahul raju shyam - passenger
         e1 e2 - elevator
     )
     (:init
-        (next n1 n2) (next n2 n3) (next n3 n4) (next n4 n5)
-        (lift-at e1 n1) (lift-at e2 n5)
-        (passenger-at p1 n2) (passenger-at p2 n2) (passenger-at p3 n4)
+        (next floor1 floor2) (next floor2 floor3) (next floor3 floor4) (next floor4 floor5)
+        (lift-at e1 floor1) (lift-at e2 floor5)
+        (passenger-at rahul floor2) (passenger-at raju floor2) (passenger-at shyam floor4)
     )
     (:goal (and
-        (passenger-at p1 n1)
-        (passenger-at p2 n1)
-        (passenger-at p3 n1)
+        (passenger-at rahul floor1)
+        (passenger-at raju floor1)
+        (passenger-at shyam floor1)
         )
     )
 )
