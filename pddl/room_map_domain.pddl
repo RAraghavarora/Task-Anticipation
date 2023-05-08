@@ -1,5 +1,5 @@
 (define (domain room-planning)
-    (:requirements :strips :typing :negative-preconditions)
+    (:requirements :strips :typing :negative-preconditions :derived-predicates)
     (:types 
         room
         object
@@ -9,11 +9,15 @@
         (room ?r - room)
         (object ?o - object)
         (agent ?a - agent)
-        (adjacent ?r1 ?r2 - room)
+        (adjacent ?r1 - room ?r2 - room)
         (at ?o - object ?r1 - room)
         (carrying ?o - object ?a - agent)
         (in-room ?a - agent ?r1 - room)
         (busy ?a - agent)
+    )
+
+    (:derived (adjacent ?r2 - room ?r1 - room)
+          (adjacent ?r1 ?r2)
     )
 
     (:action move
@@ -64,5 +68,7 @@
             (not (busy ?a))
         )
     )
+
+
 
 )
