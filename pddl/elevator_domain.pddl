@@ -1,5 +1,5 @@
 (define (domain elevators)
-    (:requirements :typing)
+    (:requirements :typing :adl :disjunctive-preconditions :quantified-preconditions :conditional-effects :universal-preconditions)
     (:types elevator passenger num - object)
 
     (:predicates
@@ -44,6 +44,7 @@
             (boarded ?person ?lift)
         )
     )
+
     
     (:action leave
         :parameters (?person - passenger ?floor - num ?lift - elevator)

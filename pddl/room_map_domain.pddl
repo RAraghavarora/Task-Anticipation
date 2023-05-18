@@ -16,9 +16,9 @@
         (busy ?a - agent)
     )
 
-    (:derived (adjacent ?r2 - room ?r1 - room)
-          (adjacent ?r1 ?r2)
-    )
+    ; (:derived (adjacent ?r2 - room ?r1 - room)
+    ;       (adjacent ?r1 ?r2)
+    ; )
 
     (:action move
         :parameters (?a - agent ?r1 - room ?r2 - room)
@@ -68,7 +68,4 @@
             (not (busy ?a))
         )
     )
-
-
-
 )

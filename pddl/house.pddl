@@ -8,7 +8,6 @@
   )
   (:predicates
     (clean ?c - item)
-    (dirty ?c - item)
     (empty ?c - item)
     (full ?c - item)
     (on ?i - item ?s - stove)
@@ -27,31 +26,26 @@
       (at start (full ?cm))
       (at start (full ?cp))
       (at start (empty ?m))
-      (over all (not (dirty ?m)))
     )
     :effect (and
       (at end (not (empty ?m)))
       (at end (not (full ?cm)))
       (at end (not (full ?cp)))
-      (at end (dirty ?m))
+      (at end (not (clean ?m)))
     )
   )
 
   (:durative-action prepare-dinner
-    :parameters (?p - person ?pl - plate ?s - stove ?pt - pot ?f - food)
+    :parameters (?p - person ?s - stove ?pt - pot ?f - food)
     :duration (= ?duration 10)
     :condition (and
-      (at start (clean ?pl))
       (at start (clean ?pt))
       (at start (not (on ?pt ?s)))
-      (over all (not (dirty ?pl)))
-      (over all (not (dirty ?pt)))
     )
     :effect (and
-      (at end (on ?pt ?s))
+      
       (at end (cooked ?f))
-      (at end (dirty ?pl))
-      (at end (dirty ?pt))
+      (at end (not (clean ?pt)))
     )
   )
 
@@ -71,11 +65,10 @@
     :parameters (?p - person ?c - item)
     :duration (= ?duration 3)
     :condition (and
-        (at start (dirty ?c))
+        (at start (not (clean ?c)))
     )
     :effect (and
         (at end (clean ?c))
-        (at end (not (dirty ?c)))
     )
 )
 
@@ -92,7 +85,7 @@
 
 (:durative-action load-laundry
     :parameters (?p - person ?cl - clothes ?w - washer)
-    :duration (= ?duration 3)
+    :duration (= ?duration 1)
     :condition (and
         (at start (collected ?cl))
         (at start (not (loaded ?cl ?w)))
@@ -102,4 +95,17 @@
         (at end (not (collected ?cl)))
     )
 )
+
+(:durative-action wash-clothes
+    :parameters (?p - person ?cl - clothes ?w - washer)
+    :duration (= ?duration 20)
+    :condition (and
+        (at start (loaded ?cl ?w))
+    )
+    :effect (and
+        (at end (washed ?cl))
+        (at end (not (loaded ?cl ?w)))
+    )
+)
+
 )

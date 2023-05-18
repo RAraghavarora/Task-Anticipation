@@ -1,4 +1,4 @@
-(define (problem elevators-problem)
+(define (problem elevators_problem)
     (:domain elevators)
     (:objects
         floor1 floor2 floor3 floor4 floor5 - num
@@ -12,8 +12,8 @@
     )
     (:goal (and
         (passenger-at rahul floor1)
-        (passenger-at raju floor1)
-        (passenger-at shyam floor1)
+        (passenger-at raju floor5)
+        (passenger-at shyam floor3)
         )
     )
 )
