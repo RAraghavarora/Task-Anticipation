@@ -47,3 +47,32 @@ daily_activities_2 = {
     "9:00 PM": "Close lights for all the rooms."
 }
 
+daily_activities_3 = {
+    "7:00 AM": "Prepare coffee",
+    "7:15 AM": "Make the bed",
+    "7:30 AM": "Prepare breakfast",
+    "8:00 AM": "Serve breakfast",
+    "8:15 AM": "Load dirty dishes into dishwasher",
+    "8:45 AM": "Sweep the kitchen floor",
+    "9:00 AM": "Vacuum the living room",
+    "9:30 AM": "Dust the furniture",
+    "10:00 AM": "Take out the trash",
+    "10:30 AM": "Water the plants",
+    "11:00 AM": "Start the laundry",
+    "11:30 AM": "Clean the bathrooms",
+    "12:00 PM": "Mop the floors",
+    "12:45 AM": "Fold the laundry",
+    "1:30 PM": "Put away the laundry",
+    "2:00 PM": "Prepare lunch",
+    "2:45 PM": "Serve lunch",
+    "4:00 PM": "Clean up after lunch",
+    "4:30 PM": "Prepare and serve tea",
+    "5:00 PM": "Run the dishwasher",
+    "6:00 PM": "Take out the trash and recycling",
+    "6:30 PM": "Tidy up common areas such as the living room or family room",
+    "7:00 PM": "Prepare dinner"
+    "7:30 PM": "Serve Dinner"
+    "8:00 PM": "Remove spoilt food"
+    "8:30 PM": "Close the lights"
+}
+
