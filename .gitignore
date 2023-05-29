@@ -2,3 +2,6 @@
 poetry.lock
 .vscode/
 __pycache__/
+FF-X/
+Metric-FF-v2.1/
+*.sif

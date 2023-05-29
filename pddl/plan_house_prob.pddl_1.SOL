@@ -1,0 +1,14 @@
+
+; Version LPG-td-1.4
+; Seed 77405934
+; Command line: ./LPG-td-1.4/lpg-td -f house_prob.pddl -o house.pddl -speed 
+; Problem house_prob.pddl
+; Actions having STRIPS duration
+; Time 0.00
+; Search time 0.00
+; Parsing time 0.00
+; Mutex time 0.00
+; NrActions 0
+
+
+no solution
