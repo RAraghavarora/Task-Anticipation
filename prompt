@@ -1,0 +1,59 @@
+# Based on previous routine, please predict a possible task sequence for day 5 and 6 from time_range 1 PM to 6 PM
+
+daily_activities_1 = {
+    "1:00 PM": "Clean dirty dishes in the sink",
+    "1:30 PM": "Bring book from living room to home office",
+    "2:00 PM": "Clean the windows",
+    "3:00 PM": "Serve cookies and warm milk",
+    "5:00 PM": "Prepare cake mix and put it in the oven for baking",
+    "6:30 PM": "Collect the baked cake, cut it down and serve",
+    "7:00 PM": "Collect leftover food and store in the fridge",
+    "8:00 PM": "Prepare a nutritious vegetarian dinner with green vegetables",
+    "8:30 PM": "Serve the dinner",
+    "9:00 PM": "Close lights for all the rooms and lock the house"
+}
+
+daily_activities_2 = {
+    "1:00 PM": "Wipe the counter in the home office",
+    "1:30 PM": "Collect and Clean dirty dishes",
+    "2:30 PM": "Collect leftover food and store in the fridge",
+    "3:00 PM": "Collect the dry clothes",
+    "3:30 PM": "Iron the clean clothes"
+    "5:00 PM": "Fold and put away the clothes",
+    "7:00 PM": "Prepare chinese dinner",
+    "8:30 PM": "Serve the dinner",
+    "9:00 PM": "Close lights for all the rooms."
+}
+
+daily_activities_3 = {
+    "1:30 PM": "Put away the laundry",
+    "2:00 PM": "Prepare lunch",
+    "2:45 PM": "Serve lunch",
+    "4:00 PM": "Clean up after lunch",
+    "4:30 PM": "Prepare and serve tea",
+    "5:00 PM": "Run the dishwasher",
+    "6:00 PM": "Take out the trash and recycling",
+    "6:30 PM": "Tidy up common areas such as the living room or family room",
+    "7:00 PM": "Prepare dinner"
+    "7:30 PM": "Serve Dinner"
+    "8:00 PM": "Remove spoilt food"
+}
+
+daily_activities_4 = {
+    "1:00 PM": "Clean dirty utensils",
+    "2:00 PM": "Prepare and serve lunch",
+    "3:00 PM": "EXTINGUISH FIRE IN THE KITCHEN"
+    "3:30 PM": "Clean the bathrooms",
+    "4:00 PM": "Iron the clothes",
+    "5:30 PM": "Put away the laundry",
+    "6:00 PM": "Run the dishwasher",
+    "6:30 PM": "Take out the trash.",
+    "7:30 PM": "Set up clean dishes in their place",
+    "8:00 PM": "Prepare a light dinner"
+    "9:00 PM": "Serve Dinner"
+    "10:00 PM": "Remove spoilt food"
+    "10:30 PM": "Put leftover food in the fridge"
+}
+
+daily_activities_5 = {}
+daily_activities_6 = {}
