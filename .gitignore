@@ -5,3 +5,4 @@ __pycache__/
 FF-X/
 Metric-FF-v2.1/
 *.sif
+gpt_prompts/
