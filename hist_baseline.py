@@ -1,83 +1,132 @@
 import numpy as np
 
-daily_activities_1 = {
-    "7:00 AM": "Open Curtains",
-    "7:30 AM": "Cut fruits for breakfast",
-    "8:00 AM": "Serve breakfast on the dining table",
-    "8:30 AM": "Clean and make up the bed in the bedroom",
-    "9:00 AM": "Water the plants in the living room",
-    "9:30 AM": "Load dirty clothes in the washing machine",
-    "10:00 AM": "Vacuum the house",
-    "10:30 AM": "Collect trash from every room and throw it in the dustbin",
-    "11:00 AM": "Collect the newspaper",
-    "11:30 AM": "Collect the dirty dishes and move them to the sink",
-    "12:00 PM": "Cook vegetables to prepare lunch",
-    "12:30 PM": "Serve lunch",
-    "1:00 PM": "Clean dirty dishes in the sink",
-    "1:30 PM": "Bring book from living room to home office",
-    "2:00 PM": "Clean the windows",
-    "3:00 PM": "Serve cookies and warm milk",
-    "5:00 PM": "Prepare cake mix and put it in the oven for baking",
-    "6:30 PM": "Collect the baked cake, cut it down and serve",
-    "7:00 PM": "Collect leftover food and store in the fridge",
-    "8:00 PM": "Prepare a nutritious vegetarian dinner with green vegetables",
-    "8:30 PM": "Serve the dinner",
-    "9:00 PM": "Close lights for all the rooms and lock the house"
-}
-
-daily_activities_2 = {
-    "6:45 AM": "Open Curtains",
-    "7:15 AM": "Clean the bed",
-    "8:00 AM": "Prepare and serve milk and cereal breakfast with some fruits",
-    "8:30 AM": "Load dirty clothes in the washing machine",
+routine_day_1 = {
+    "7:00 AM": "Make the bed",
+    "8:00 AM": "Clean the kitchen appliances",
     "9:00 AM": "Vacuum the house",
-    "9:45 AM": "Collect and dry the washed clothes",
-    "10:00 AM": "Wipe down kitchen counter and appliances",
-    "10:30 AM": "Water the indoor plants",
-    "11:30 AM": "Make a cup of coffee",
-    "12:00 PM": "Cook vegetables to prepare lunch",
-    "12:30 PM": "Serve lunch",
-    "1:00 PM": "Collect and Clean dirty dishes",
-    "1:30 PM": "Wipe the counter in the home office",
-    "2:00 PM": "Clean the windows",
-    "2:30 PM": "Collect leftover food and store in the fridge",
-    "3:00 PM": "Collect the dry clothes",
-    "3:30 PM": "Iron the clean clothes",
-    "5:00 PM": "Fold and put away the clothes",
-    "7:00 PM": "Prepare chinese dinner",
-    "8:30 PM": "Serve the dinner",
-    "9:00 PM": "Close lights for all the rooms."
-}
-daily_activities_3 = {
-    "7:00 AM": "Prepare coffee",
-    "7:15 AM": "Make the bed",
-    "7:30 AM": "Prepare breakfast",
-    "8:00 AM": "Serve breakfast",
-    "8:15 AM": "Load dirty dishes into dishwasher",
-    "8:45 AM": "Sweep the kitchen floor",
-    "9:00 AM": "Vacuum the living room",
-    "9:30 AM": "Dust the furniture",
-    "10:00 AM": "Take out the trash",
-    "10:30 AM": "Water the plants",
-    "11:00 AM": "Start the laundry",
-    "11:30 AM": "Clean the bathrooms",
-    "12:00 PM": "Mop the floors",
-    "12:45 AM": "Fold the laundry",
-    "1:30 PM": "Put away the laundry",
-    "2:00 PM": "Prepare lunch",
-    "2:45 PM": "Serve lunch",
-    "4:00 PM": "Clean up after lunch",
-    "4:30 PM": "Prepare and serve tea",
-    "5:00 PM": "Run the dishwasher",
-    "6:00 PM": "Take out the trash and recycling",
-    "6:30 PM": "Tidy up common areas such as the living room or family room",
+    "10:00 AM": "Water the plants",
+    "11:00 AM": "Load dirty clothes",
+    "12:00 PM": "Run the washing machine",
+    "1:00 PM": "Prepare lunch",
+    "2:00 PM": "Serve lunch",
+    "3:00 PM": "Dry the clothes",
+    "4:00 PM": "Iron the clothes",
+    "5:00 PM": "Fold the clothes",
+    "6:00 PM": "Clean the windows",
     "7:00 PM": "Prepare dinner",
-    "7:30 PM": "Serve Dinner",
-    "8:00 PM": "Remove spoilt food",
-    "8:30 PM": "Close the lights"
+    "8:00 PM": "Serve dinner",
+    "9:00 PM": "Put leftover food in fridge",
+    "10:00 PM": "Close lights for all the rooms"
 }
-
-all_activities = list(daily_activities_1.values()) + list(daily_activities_2.values()) + list(daily_activities_3.values())
+routine_day_2 = {
+    "7:00 AM": "Make the bed",
+    "8:00 AM": "Prepare Breakfast",
+    "9:00 AM": "Serve Breakfast",
+    "10:00 AM": "Mop the floors",
+    "11:00 AM": "Load dirty clothes",
+    "12:00 PM": "Run the washing machine",
+    "1:00 PM": "Prepare lunch",
+    "2:00 PM": "Serve lunch",
+    "3:00 PM": "Clean the kitchen counters",
+    "4:00 PM": "Clean dirty dishes in the sink",
+    "5:00 PM": "Serve cookies and warm milk",
+    "6:00 PM": "Clean the windows",
+    "7:00 PM": "Prepare dinner",
+    "8:00 PM": "Serve dinner",
+    "9:00 PM": "Throw away spoilt food",
+    "10:00 PM": "Take out the trash"
+}
+routine_day_3 = {
+    "7:00 AM": "Open Curtains",
+    "8:00 AM": "Clean the kitchen appliances",
+    "9:00 AM": "Dust the furniture",
+    "10:00 AM": "Water the plants",
+    "11:00 AM": "Load dirty clothes",
+    "12:00 PM": "Run the washing machine",
+    "1:00 PM": "Prepare lunch",
+    "2:00 PM": "Serve lunch",
+    "3:00 PM": "Clean the kitchen counters",
+    "4:00 PM": "Clean dirty dishes in the sink",
+    "5:00 PM": "Run the dishwasher",
+    "6:00 PM": "Clean the windows",
+    "7:00 PM": "Prepare dinner",
+    "8:00 PM": "Serve dinner",
+    "9:00 PM": "Collect dishes from dishwasher",
+    "10:00 PM": "Remove expired food from fridge"
+}
+routine_day_4 = {
+    "7:00 AM": "Make the bed",
+    "8:00 AM": "Prepare Breakfast",
+    "9:00 AM": "Serve Breakfast",
+    "10:00 AM": "Mop the floors",
+    "11:00 AM": "Load dirty clothes",
+    "12:00 PM": "Run the washing machine",
+    "1:00 PM": "Prepare lunch",
+    "2:00 PM": "Serve lunch",
+    "3:00 PM": "Clean the kitchen counters",
+    "4:00 PM": "Add dishes to dishwasher",
+    "5:00 PM": "Run the dishwasher",
+    "6:00 PM": "Clean the windows",
+    "7:00 PM": "Prepare dinner",
+    "8:00 PM": "Serve dinner",
+    "9:00 PM": "Put leftover food in fridge",
+    "10:00 PM": "Close lights for all the rooms"
+}
+routine_day_5 = {
+    "7:00 AM": "Make the bed",
+    "8:00 AM": "Clean the kitchen appliances",
+    "9:00 AM": "Dust the furniture",
+    "10:00 AM": "Mop the floors",
+    "11:00 AM": "Load dirty clothes",
+    "12:00 PM": "Run the washing machine",
+    "1:00 PM": "Prepare lunch",
+    "2:00 PM": "Serve lunch",
+    "3:00 PM": "Dry the clothes",
+    "4:00 PM": "Clean dirty dishes in the sink",
+    "5:00 PM": "Serve cookies and warm milk",
+    "6:00 PM": "Clean the windows",
+    "7:00 PM": "Prepare dinner",
+    "8:00 PM": "Serve dinner",
+    "9:00 PM": "Put leftover food in fridge",
+    "10:00 PM": "Close lights for all the rooms"
+}
+routine_day_6 = {
+    "7:00 AM": "Make a cup of coffee",
+    "8:00 AM": "Clean the kitchen appliances",
+    "9:00 AM": "Vacuum the house",
+    "10:00 AM": "Mop the floors",
+    "11:00 AM": "Load dirty clothes",
+    "12:00 PM": "Run the washing machine",
+    "1:00 PM": "Prepare lunch",
+    "2:00 PM": "Serve lunch",
+    "3:00 PM": "Dry the clothes",
+    "4:00 PM": "Add dishes to dishwasher",
+    "5:00 PM": "Run the dishwasher",
+    "6:00 PM": "Clean the windows",
+    "7:00 PM": "Prepare dinner",
+    "8:00 PM": "Serve dinner",
+    "9:00 PM": "Collect dishes from dishwasher",
+    "10:00 PM": "Remove expired food from fridge"
+}
+routine_day_7 = {
+    "7:00 AM": "Clean the bathroom",
+    "8:00 AM": "Clean the kitchen appliances",
+    "9:00 AM": "Dust the furniture",
+    "10:00 AM": "Collect dirty clothes",
+    "11:00 AM": "Load dirty clothes",
+    "12:00 PM": "Run the washing machine",
+    "1:00 PM": "Prepare lunch",
+    "2:00 PM": "Serve lunch",
+    "3:00 PM": "Clean the kitchen counters",
+    "4:00 PM": "Clean dirty dishes in the sink",
+    "5:00 PM": "Serve cookies and warm milk",
+    "6:00 PM": "Clean the windows",
+    "7:00 PM": "Prepare dinner",
+    "8:00 PM": "Serve dinner",
+    "9:00 PM": "Put leftover food in fridge",
+    "10:00 PM": "Take out the trash"
+}
+all_activities = list(routine_day_1.values()) + list(routine_day_2.values()) + list(routine_day_3.values()) + list(routine_day_4.values()) + list(routine_day_5.values()) + list(routine_day_6.values()) + list(routine_day_7.values())
 
 # Step 2: Compute Transition Probabilities
 transition_counts = {}
@@ -96,7 +145,9 @@ for current_task, next_tasks in transition_counts.items():
     transition_probabilities[current_task] = {next_task: count / total_count for next_task, count in next_tasks.items()}
 
 # Step 3: Define the Transition Probability Matrix
-tasks = list(set(all_activities))
+seen = set()
+tasks = [x for x in all_activities if x not in seen and not seen.add(x)]
+
 num_tasks = len(tasks)
 transition_matrix = np.zeros((num_tasks, num_tasks))
 
@@ -107,7 +158,7 @@ for i, task1 in enumerate(tasks):
                 transition_matrix[i, j] = transition_probabilities[task1][task2]
 
 # Step 4: Run the MCMC Algorithm
-sequence_length = 10
+sequence_length = 16
 initial_task = "Open Curtains"
 sequence = [initial_task]
 
@@ -118,4 +169,39 @@ for _ in range(sequence_length - 1):
     sequence.append(next_task)
 
 # Print the generated sequence
-print(sequence)
+import pprint
+pprint.pprint(sequence)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Assuming you have the following variables defined:
+# transition_probabilities: Dictionary of transition probabilities
+# tasks: List of unique tasks
+# transition_matrix: Transition probability matrix
+
+# Plot Transition Probabilities
+plt.figure(figsize=(8, 6))
+plt.imshow(transition_matrix.T, cmap='Wistia')
+plt.xticks(np.arange(len(tasks)), range(len(tasks)), rotation=90)
+plt.yticks(np.arange(len(tasks)), tasks)
+plt.colorbar(label='Transition Probability')
+plt.title('Transition Probability Matrix')
+# plt.xlabel('Next Task')
+# plt.ylabel('Current Task')
+plt.tight_layout()
+plt.grid()
+plt.savefig('fig1.png')
+
+# Plot Task Sequence Distribution
+task_counts = [sum(transition_probabilities.get(task, {}).values()) for task in tasks]
+
+plt.figure(figsize=(8, 6))
+plt.bar(tasks, task_counts)
+plt.title('Task Sequence Distribution')
+plt.xlabel('Task')
+plt.ylabel('Count')
+plt.xticks(rotation=90)
+plt.savefig('fig2.png')
+
+import pdb; pdb.set_trace()
