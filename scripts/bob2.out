@@ -1,0 +1,84 @@
+==========================================
+SLURM_JOB_ID = 922232
+SLURM_NODELIST = gnode043
+SLURM_JOB_GPUS = 1
+==========================================
+True
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 13.50 seconds
+
+    When prompting llama (Large Language Model Meta AI), 7B model, it will predict the next word to recursively generate text.
+    If you want llama to identify a pattern, or a specific sequence in a data, you can use the following prompt:
+    
+    <start pos='f-5'>
+    '[CLS] cookie ice cream linda f-4 f-7 [SEP] apple banana'
+    '[CLS] cookie ice cream linda f-4 f-7'
+    '[CLS] cookie ice cream linda f-4 [CLS] fish sandwich'
+    '[CLS] fish sandwich linda f-4'
+    '[CLS] f-4 fish sandwich'
+    </start>
+    in which these related sentences are identified as 'cookie' and 'linda'.
+    This works, because each time llama selects the next token as predicted next word.
+    Here, llama tries to predict next 'cookie', 'ice-cream', 'linda' 3 times, and each time llama outputs
+    the next token and embeddings it is re-initialized.
+    
+    Note: llama will only predict the first words and the following sentence can only be of two types,
+        either it has 3 predicated tokens that is identical to the previous token type, or otherwise
+        the previous token type needs to be a NON_TOKEN followed by a token of a previous token type (ex. '[SEP]') 
+        which will provide required information to reproduce the previous token type correctly.
+
+    Enough with the theory, now just use the token and the
+    batch/seq examples to guide you. 
+
+    This is a 7B model, so there will be no subscribe features. 
+    
+    Keep in mind that the lowercase arguments, which means 'set' in Python) are optional arguments, it will work as
+    long as the new parameter you add exists in the code path.
+
+    For example, It is easier if you use the tasktracker to help you for development.
+    """
+    # This is a tokenizer model, so I will remove the decode hyperparam.
+    model.add_hidden_layer(name='decoder_b1',
+                            input_tensor=model.bidim_input,
+                            n_in=256,
+                            n_out=512,
+                            weights_initializer=tf.random_uniform_initializer(
+                                0.02, 0.02, dtype=tf.float32),
+                            activation='tanh')
+    model.add_hidden_layer(name='decoder_b2',
+                            input_tensor=model.decoder_b1,
+                            n_in=512,
+                            n_out=1024,
+                            weights_initializer=tf.random_uniform_initializer(
+                                0.02, 0.02, dtype=tf.float32),
+                            activation='tanh')
+    model.add_hidden_layer(name='encoder_b1',
+                            input_tensor=model.bidim_input,
+                            n_in=256,
+                            n_out=512,
+                            weights_initializer=tf.random_uniform_initializer(
+                                0.02, 0.02, dtype=tf.float32),
+                            activation='relu')
+    model.add_hidden_layer(name='encoder_b2',
+                            input_tensor=model.encoder_b1,
+                            n_in=512,
+                            n_out=1024,
+                            weights_initializer=tf.random_uniform_initializer(
+                                0.02, 0.02, dtype=tf.float32),
+                            activation='relu')
+    model.add_hidden_layer(name='lstm',
+                            input_tensor=model.encoder_b2,
+                            n_in=512,
+                            n_out=768,
+                            weights_initializer=tf.random_uniform_initializer(
+                                0.02, 0.02, dtype=tf.float32),
+                            activation='relu')
+
+    # The decoder lstm layer can also be
+    #
+
+==================================
+
+0
