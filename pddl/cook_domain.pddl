@@ -13,11 +13,19 @@
     (cooked ?f - food)
     (served ?f - food)
     (can-cut ?l - location)
+    (can-cook ?l - location)
+    (can-serve ?l - location)
   )
   (:action move-to
-      :parameters (?p - person ?l1 - location)
-      :precondition(not (next-to ?p ?l1))
-      :effect(next-to ?p ?l1)
+      :parameters (?p - person ?l1 - location ?l2 - location)
+      :precondition(and
+        (next-to ?p ?l1)
+        (not (next-to ?p ?l2)) ; Redundant
+      )
+      :effect(and
+        (next-to ?p ?l2)
+        (not(next-to ?p ?l1))
+      )
   )
   (:action pick-up
     :parameters (?p - person ?f - food ?l - location)
@@ -52,14 +60,25 @@
     :effect (vegetables-cut ?f)
   )
 
-  (:action cook-on-stove
+  (:action cook
     :parameters (?p - person ?f - food ?l - location)
     :precondition (and
       (at ?f ?l)
       (vegetables-cut ?f)
       (not (cooked ?f))
+      (can-cook ?l)
     )
     :effect (cooked ?f)
+  )
+
+  (:action serve
+    :parameters (?p - person ?f - food ?l - location)
+    :precondition (and
+      (at ?f ?l)
+      (next-to ?p ?l)
+      (can-serve ?l)
+    )
+    :effect (served ?f)
   )
 )
 

@@ -3,19 +3,25 @@
 
   (:objects
     vegetables milk - food
-    fridge cutting-board stove - location
+    fridge cutting-board stove dining_table - location
     agent47 - person
   )
 
   (:init
-      (at vegetables fridge)
-      (not(cooked vegetables))
-      (next-to agent47 stove)
       (can-cut cutting-board)
-    )
+      (can-cook stove)
+      (can-serve dining_table)
+      (at vegetables fridge)
+      (at milk fridge)
+      (not(cooked vegetables))
+      (next-to agent47 stove)    )
 
 (:goal
+  (and
     (cooked vegetables)
+    (served vegetables)
+    (served milk)
+  )
 )
 
 )
