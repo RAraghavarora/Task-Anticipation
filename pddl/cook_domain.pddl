@@ -1,12 +1,12 @@
 (define (domain household)
-  (:requirements :strips :typing :negative-preconditions)
+  (:requirements :strips :typing :negative-preconditions :durative-actions)
   (:types 
     location
     food
     person
   )
   (:predicates
-    (at ?f - food ?l - location)
+    (at-loc ?f - food ?l - location)
     (next-to ?p - person ?l - location)
     (carrying ?p - person ?f - food)
     (vegetables-cut ?f - food)
@@ -16,25 +16,28 @@
     (can-cook ?l - location)
     (can-serve ?l - location)
   )
-  (:action move-to
+
+  (:durative-action move-to
       :parameters (?p - person ?l1 - location ?l2 - location)
-      :precondition(and
-        (next-to ?p ?l1)
-        (not (next-to ?p ?l2)) ; Redundant
+      :duration (= ?duration 5)
+      :condition(and
+        (at start (next-to ?p ?l1))
+        (at start (not (next-to ?p ?l2))) ; Redundant
       )
       :effect(and
-        (next-to ?p ?l2)
-        (not(next-to ?p ?l1))
+        (at start (not(next-to ?p ?l1)))
+        (at end (next-to ?p ?l2))
       )
   )
+
   (:action pick-up
     :parameters (?p - person ?f - food ?l - location)
     :precondition (and
-        (at ?f ?l)
+        (at-loc ?f ?l)
         (next-to ?p ?l)
     )
     :effect (and
-      (not (at ?f ?l))
+      (not (at-loc ?f ?l))
       (carrying ?p ?f)
     )
   )
@@ -46,35 +49,39 @@
        )
       :effect (and 
             (not(carrying ?p ?f))
-            (at ?f ?l)
+            (at-loc ?f ?l)
       )
   )
-  (:action cut-vegetables
+  (:durative-action cut-vegetables
     :parameters (?p - person ?f - food ?l - location)
-    :precondition (and
-      (at ?f ?l)
-      (next-to ?p ?l)
-      (not (vegetables-cut ?f))
-      (can-cut ?l)
+    :duration (= ?duration 5)
+    :condition (and
+      (at start (at-loc ?f ?l))
+      (at start(next-to ?p ?l))
+      (at start (not (vegetables-cut ?f)))
+      (over all (can-cut ?l))
     )
-    :effect (vegetables-cut ?f)
+    :effect 
+    (at end (vegetables-cut ?f))
   )
 
-  (:action cook
+  (:durative-action cook
     :parameters (?p - person ?f - food ?l - location)
-    :precondition (and
-      (at ?f ?l)
-      (vegetables-cut ?f)
-      (not (cooked ?f))
-      (can-cook ?l)
+    :duration (= ?duration 10)
+    :condition (and
+      (at start (at-loc ?f ?l))
+      (at start (vegetables-cut ?f))
+      (at start (not (cooked ?f)))
+      (over all (can-cook ?l))
     )
-    :effect (cooked ?f)
+    :effect 
+    (at end (cooked ?f))
   )
 
   (:action serve
     :parameters (?p - person ?f - food ?l - location)
     :precondition (and
-      (at ?f ?l)
+      (at-loc ?f ?l)
       (next-to ?p ?l)
       (can-serve ?l)
     )

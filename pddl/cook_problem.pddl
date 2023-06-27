@@ -11,17 +11,20 @@
       (can-cut cutting-board)
       (can-cook stove)
       (can-serve dining_table)
-      (at vegetables fridge)
-      (at milk fridge)
+      (at-loc vegetables fridge)
+      (at-loc milk fridge)
       (not(cooked vegetables))
-      (next-to agent47 stove)    )
-
-(:goal
-  (and
-    (cooked vegetables)
-    (served vegetables)
-    (served milk)
+      (next-to agent47 stove)    
   )
-)
+
+  (:goal
+    (and
+      (cooked vegetables)
+      (served vegetables)
+      (served milk)
+    )
+  )
+
+  (:metric minimize (total-time))
 
 )
