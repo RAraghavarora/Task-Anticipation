@@ -54,3 +54,23 @@ for obj_id in obj_ids:
 
 # Save the image with bounding boxes
 bbox_img.save('bounding_boxes.png')
+
+
+import numpy as np
+from PIL import Image
+
+mask = np.array(event.instance_masks.mask('Bread|-00.52|+01.17|-00.03'))
+mask_img = Image.fromarray(mask.astype(np.uint8)*255)
+
+mask = np.stack((mask,)*3, axis=-1)
+image = event.cv2img
+resultant = image*mask
+inverse_mask = 1 - mask
+inverse_mask = np.stack((inverse_mask,)*3, axis=-1)
+background = 255 * inverse_mask
+background = background[:, :, :, 0]
+print(background.shape)
+background = background.astype(np.uint8) # Convert data type to uint8
+resultant += background
+
+cv2.imwrite('mask.png', resultant)
